@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from '../atoms/Button';
 import { Input } from './../atoms/Input';
 
 export const Main = () => {
@@ -49,7 +50,7 @@ export const Main = () => {
       />
       <checkbox></checkbox>
       <div>* Я согласен с политикой конфиденциальности</div>
-      <button></button>
+      <Button disabeled label="Отправить"></Button>
     </div>
   );
 };
