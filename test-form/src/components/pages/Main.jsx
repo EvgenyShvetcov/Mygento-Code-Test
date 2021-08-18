@@ -55,8 +55,8 @@ export const Main = () => {
         <div>Пол *</div>
         <div>Укажите пол</div>
       </div>
-      <checkbox></checkbox>
-      <checkbox></checkbox>
+      <input type='radio' />
+      <input type='radio' />
       <div>Github</div>
       <Input
         type="text"
@@ -64,7 +64,7 @@ export const Main = () => {
         onChange={e => setGitHub(e.target.value)}
         label="Вставьте ссылку на Github"
       />
-      <checkbox></checkbox>
+      <input type='checkbox' />
       <div>* Я согласен с политикой конфиденциальности</div>
       <Button onClick={()=>{if (name && surname && email){setHandleModal(true)} else{ setWarnCheck(true)}}} label="Отправить"></Button>
       {handleModal && <Modal buttonLabel='Понятно' text='Мы скоро свяжемся с вами' header={`Спасибо ${name}!`} small/>}
