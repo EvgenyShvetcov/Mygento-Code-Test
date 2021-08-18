@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Button = ({...props, label}) => {
+export const Button = ({label,className,type, ...props}) => {
 
 
         return(
