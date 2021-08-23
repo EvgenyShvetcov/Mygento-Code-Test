@@ -11,12 +11,16 @@ export const Input = ({
   onHover,
   disabled = false,
   filled,
+  warning,
   ...props
 }) => {
-  // const [err, showErr] = useState(false);
   const [blurMessage, setBlurMessage] = useState(false);
 
-  useEffect(()=> {if (warn=== true){setBlurMessage(true)}},[warn])
+  useEffect(() => {
+    if (warn === true) {
+      setBlurMessage(true);
+    }
+  }, [warn]);
 
   return (
     <div className={`input`}>
@@ -28,9 +32,11 @@ export const Input = ({
         onBlur={() => setBlurMessage(true)}
         onFocus={() => setBlurMessage(false)}
         type={type}
-        className={`input__pole ` + (blurMessage && !value && required ? "-warning" : '')}
+        className={
+          `input__pole ` + (blurMessage && !value && required ? "-warning" : "")
+        }
         value={value}
-        onHover={disabled ? onHover: ''}
+        onHover={disabled ? onHover : ""}
         disabled={disabled}
         {...props}
       ></input>
@@ -55,6 +61,14 @@ export const Input = ({
         <div className={`input__warning`}>
           Пожалуйста укажите электронную почту
         </div>
+      )}
+      {warning && value && blurMessage && type === "email" && (
+        <div className={`input__warning`}>
+          Пожалуйста укажите электронную почту
+        </div>
+      )}
+      {warning && value && blurMessage && type === "text" && (
+        <div className={`input__warning`}>В имени могут быть только буквы</div>
       )}
     </div>
   );

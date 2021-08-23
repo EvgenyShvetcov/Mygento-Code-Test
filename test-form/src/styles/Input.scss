@@ -1,6 +1,7 @@
 .input {
   height: 88px;
-  width: 256px;
+  width: 343px;
+  // width: calc(100% - 32px)
   &__label {
     color: #262626;
     font-weight: 400;
@@ -19,36 +20,34 @@
   }
   &__pole {
     height: 40px;
-    width: 256px;
-    background: #FFFFFF;
-    border: 1px solid #D9D9D9;
+    width: 343px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
     box-sizing: border-box;
     border-radius: 2px;
     color: #595959;
     padding: 8px 12px 8px 12px;
-    &.-warning{
+    &.-warning {
       border: 1px solid #5a5f59;
     }
     &::placeholder {
-      color: #BFBFBF ;
+      color: #bfbfbf;
       font-weight: 300;
       font-weight: 400;
-      font-size: 14px; 
-      }
-    &:focus{
-      border: 1px solid #40A9FF; 
+      font-size: 14px;
+    }
+    &:focus {
+      border: 1px solid #40a9ff;
       outline: none;
     }
-    &:hover{
-      border: 1px solid #40A9FF;
+    &:hover {
+      border: 1px solid #40a9ff;
     }
-   &:disabled{
-     color: #BFBFBF;
-     &:hover{
-      border: 1px solid #D9D9D9;
+    &:disabled {
+      color: #bfbfbf;
+      &:hover {
+        border: 1px solid #d9d9d9;
       }
-   }
-   
+    }
   }
-  
 }
