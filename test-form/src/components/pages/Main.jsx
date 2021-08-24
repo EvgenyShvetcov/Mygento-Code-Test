@@ -26,7 +26,6 @@ export const Main = () => {
 
   //проверка на ворнинги
   const [warnCheck, setWarnCheck] = useState(false);
-  const [validation, setValidation] = useState(false);
 
   // реф для загрузки файлов под баттаном
   const fileUploaderRef = useRef();
@@ -46,7 +45,7 @@ export const Main = () => {
     setUploadData();
     setSex();
     setPolicy();
-    // setWarnCheck(false)
+    setWarnCheck(false);
     // setHandleModal(false)
   }, [submit]);
 
@@ -69,7 +68,7 @@ export const Main = () => {
               }}
               required
               warn={warnCheck}
-              warning={/^[1-9]\d*$/.test(name)}
+              warning={!/^[a-zа-яё]+$/i.test(name)}
             />
             <Input
               type="text"
@@ -79,7 +78,7 @@ export const Main = () => {
               onChange={(e) => setSurname(e.target.value)}
               required
               warn={warnCheck}
-              warning={/^[1-9]\d*$/.test(surname)}
+              warning={!/^[a-zа-яё]+$/i.test(surname)}
             />
           </div>
           <div className="blank__right">
@@ -130,7 +129,9 @@ export const Main = () => {
               <div className="blank__file">
                 <div className="blank__clip">
                   <img src={bigclip} alt="" />
-                  <div style={{ marginLeft: "10px" }}>{uploadData[0].name}</div>
+                  <div style={{ marginLeft: "10px", width: "50px" }}>
+                    {uploadData[0].name}
+                  </div>
                 </div>
                 <img onClick={() => setUploadData()} src={Vector} alt="" />
               </div>
@@ -192,7 +193,17 @@ export const Main = () => {
       <Button
         disabled={!name || !surname || !email || !policy || !sex}
         onClick={() => {
-          if (name && surname && email && policy) {
+          if (
+            name &&
+            surname &&
+            email &&
+            policy &&
+            email.length >= 6 &&
+            email.includes("@") &&
+            email.includes(".") &&
+            /^[a-zа-яё]+$/i.test(surname) &&
+            /^[a-zа-яё]+$/i.test(name)
+          ) {
             setHandleModal(true);
           } else {
             setWarnCheck(true);
@@ -201,8 +212,10 @@ export const Main = () => {
         label={
           <div
             className={
-              "label -bot " +
-              (!name || !surname || !email || !policy ? "-disabled" : "")
+              "label -bot" +
+              (!name || !surname || !email || !policy || !sex
+                ? " -disabled"
+                : "")
             }
           >
             Отправить
@@ -217,6 +230,7 @@ export const Main = () => {
           small
           onModalClose={() => {
             setSubmit((state) => !state);
+            setWarnCheck(false);
             setHandleModal(false);
           }}
         />

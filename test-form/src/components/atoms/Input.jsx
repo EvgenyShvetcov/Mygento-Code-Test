@@ -29,7 +29,9 @@ export const Input = ({
         {required && " *"}
       </div>
       <input
-        onBlur={() => setBlurMessage(true)}
+        onBlur={() => {
+          setBlurMessage(true);
+        }}
         onFocus={() => setBlurMessage(false)}
         type={type}
         className={
@@ -40,7 +42,7 @@ export const Input = ({
         disabled={disabled}
         {...props}
       ></input>
-      {/* {err && type === 'text' && <div>В имени могут быть только буквы</div>} */}
+
       {!value &&
         blurMessage &&
         type === "text" &&

@@ -11,7 +11,6 @@ export const Modal = ({
   header,
   centralPosition,
   small,
-
   ...props
 }) => {
   return createPortal(
@@ -23,13 +22,11 @@ export const Modal = ({
           icon={<img src={close} alt="Закрыть" />}
         />
 
-        <div className="modal__header">{header}</div>
-        <div className="modal__body">{text}</div>
-        <div
-          className="modal__foot"
-          // {{ margin: "8px" }}
-        >
-          {" "}
+        <div className={small ? "modal__headersmall" : "modal__header"}>
+          {header}
+        </div>
+        <div className={small ? "modal__bodysmall" : "modal__body"}>{text}</div>
+        <div className="modal__foot">
           <Button
             className="button__modal"
             label={<div style={{ color: "#FFFFFF" }}>{buttonLabel}</div>}
