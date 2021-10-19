@@ -7,3 +7,8 @@ To run type in terminal:
 cd test-form
 
 npm start
+
+
+
+
+deployed: https://yasp-rust.vercel.app/
